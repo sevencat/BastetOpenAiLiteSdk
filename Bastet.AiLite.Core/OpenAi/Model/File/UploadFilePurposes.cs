@@ -12,7 +12,9 @@ public static class UploadFilePurposes
 		AssistantsOutput,
 		Vision,
 		Batch,
-		BatchOutput
+		BatchOutput,
+
+		FileExtract
 	}
 
 	public const string Assistants = "assistants";
@@ -22,6 +24,8 @@ public static class UploadFilePurposes
 	public const string BatchOutput = "batch_output";
 	public const string FineTune = "fine-tune";
 	public const string FineTuneResults = "fine-tune-results";
+
+	public const string FileExtract = "file-extract";
 
 	public static string EnumToString(this UploadFilePurpose uploadFilePurpose)
 	{
@@ -34,6 +38,9 @@ public static class UploadFilePurposes
 			UploadFilePurpose.BatchOutput => BatchOutput,
 			UploadFilePurpose.AssistantsOutput => AssistantsOutput,
 			UploadFilePurpose.FineTuneResults => FineTuneResults,
+
+			UploadFilePurpose.FileExtract => FileExtract,
+
 			_ => throw new ArgumentOutOfRangeException(nameof(uploadFilePurpose), uploadFilePurpose, null)
 		};
 	}
@@ -49,6 +56,8 @@ public static class UploadFilePurposes
 			BatchOutput => UploadFilePurpose.BatchOutput,
 			AssistantsOutput => UploadFilePurpose.AssistantsOutput,
 			FineTuneResults => UploadFilePurpose.FineTuneResults,
+
+			FileExtract => UploadFilePurpose.FileExtract,
 			_ => throw new ArgumentOutOfRangeException(nameof(filePurpose), filePurpose, null)
 		};
 	}
