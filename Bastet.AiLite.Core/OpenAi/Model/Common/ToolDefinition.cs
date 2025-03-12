@@ -13,7 +13,7 @@ public class ToolDefinition
 	public FunctionDefinition Function { get; set; }
 
 	[JsonIgnore]
-	public object? FunctionsAsObject { get; set; }
+	public object FunctionsAsObject { get; set; }
 }
 
 public class FileSearchTool

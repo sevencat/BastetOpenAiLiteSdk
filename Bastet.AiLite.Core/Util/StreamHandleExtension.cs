@@ -42,6 +42,9 @@ public static class StreamHandleExtension
 			cancellationToken.ThrowIfCancellationRequested();
 
 			var line = await reader.ReadLineAsync();
+
+			//Console.WriteLine(line);
+			
 			//   Console.WriteLine("---" + line);
 			// Break the loop if we have reached the end of the stream
 			if (line == null)
@@ -73,7 +76,7 @@ public static class StreamHandleExtension
 
 			if (!justDataMode && isEventDelta)
 			{
-				yield return new() { ObjectTypeName = "base.stream.event", StreamEvent = tempStreamEvent };
+				yield return new() { ObjectTypeName = "base.stream.event", stream_event = tempStreamEvent };
 				continue;
 			}
 
@@ -118,7 +121,7 @@ public static class StreamHandleExtension
 				{
 					block.HttpStatusCode = httpStatusCode;
 					block.HeaderValues = headerValues;
-					block.StreamEvent = tempStreamEvent;
+					block.stream_event = tempStreamEvent;
 					tempStreamEvent = null;
 					yield return block;
 				}

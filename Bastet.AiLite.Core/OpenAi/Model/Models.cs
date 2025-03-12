@@ -446,13 +446,13 @@ public static class Models
 	/// <param name="version"></param>
 	/// <param name="baseModel"></param>
 	/// <returns></returns>
-	public static string ModelNameBuilder(this BaseModel baseModel, Subject? subject = null, string? version = null)
+	public static string ModelNameBuilder(this BaseModel baseModel, Subject? subject = null, string version = null)
 	{
 		return ModelNameBuilder(baseModel == BaseModel.None ? null : baseModel.EnumToString(),
 			subject?.EnumToString(baseModel.EnumToString()), version);
 	}
 
-	public static string ModelNameBuilder(string? baseModel, string? subject, string? version)
+	public static string ModelNameBuilder(string baseModel, string subject, string version)
 	{
 		var response = subject ?? $"{baseModel}";
 
@@ -550,7 +550,7 @@ public static class Models
 		};
 	}
 
-	private static string? EnumToString(this BaseModel baseModel)
+	private static string EnumToString(this BaseModel baseModel)
 	{
 		return baseModel switch
 		{
@@ -564,7 +564,7 @@ public static class Models
 		};
 	}
 
-	public static string EnumToString(this Subject subject, string? baseModel)
+	public static string EnumToString(this Subject subject, string baseModel)
 	{
 		if (baseModel == null)
 		{

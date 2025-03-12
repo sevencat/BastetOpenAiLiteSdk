@@ -6,7 +6,11 @@ namespace Bastet.AiLite.OpenAi.Model.Chat;
 
 public class ChatMessage
 {
-	private ChatMessage(string role, string content, string name = null, IList<ToolCall> toolCalls = null,
+	public ChatMessage()
+	{
+	}
+
+	public ChatMessage(string role, string content, string name = null, IList<ToolCall> toolCalls = null,
 		string toolCallId = null)
 	{
 		this.role = role;
@@ -16,7 +20,7 @@ public class ChatMessage
 		this.tool_call_id = toolCallId;
 	}
 
-	private ChatMessage(string role, IList<MessageContent> contents, string name = null,
+	public ChatMessage(string role, IList<MessageContent> contents, string name = null,
 		IList<ToolCall> toolCalls = null, string toolCallId = null)
 	{
 		this.role = role;
@@ -36,6 +40,8 @@ public class ChatMessage
 
 	[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 	public string name { get; set; }
+	
+	public string reasoning_content { get; set; }
 
 	[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 	public string tool_call_id { get; set; }
@@ -47,7 +53,11 @@ public class ChatMessage
 	public IList<ToolCall> tool_calls { get; set; }
 
 	[JsonProperty]
-	public object content => Content != null ? Content : Contents;
+	public object content
+	{
+		get => Content != null ? Content : Contents;
+		set => Content = value?.ToString();
+	}
 
 	public static ChatMessage FromAssistant(string content, string name = null, IList<ToolCall> toolCalls = null)
 	{

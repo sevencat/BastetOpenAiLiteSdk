@@ -33,27 +33,27 @@ internal static class HttpClientExtensions
 		return await HandleResponseContent<TResponse>(response, cancellationToken);
 	}
 
-	public static string? GetHeaderValue(this HttpResponseHeaders headers, string headerName)
+	public static string GetHeaderValue(this HttpResponseHeaders headers, string headerName)
 	{
 		return headers.Contains(headerName) ? headers.GetValues(headerName).FirstOrDefault() : null;
 	}
-	
+
 	public static Task<HttpResponseMessage> PostAsJsonAsync<TValue>(
 		this HttpClient client,
 		string requestUri,
 		TValue value,
 		JsonSerializerSettings options = null,
-		CancellationToken cancellationToken = default (CancellationToken))
+		CancellationToken cancellationToken = default(CancellationToken))
 	{
 		if (client == null)
-			throw new ArgumentNullException(nameof (client));
+			throw new ArgumentNullException(nameof(client));
 		var jreq = JsonConvert.SerializeObject(value, options);
 		var content = new StringContent(jreq, Encoding.UTF8, "application/json");
-		return client.PostAsync(requestUri, (HttpContent) content, cancellationToken);
+		return client.PostAsync(requestUri, content, cancellationToken);
 	}
 
 	public static async Task<TResponse> PostAndReadAsDataAsync<TResponse, TData>(this HttpClient client, string uri,
-		object? requestModel, CancellationToken cancellationToken = default)
+		object requestModel, CancellationToken cancellationToken = default)
 		where TResponse : DataBaseResponse<TData>, new()
 	{
 		var response =
@@ -285,5 +285,34 @@ internal static class HttpClientExtensions
 		}
 
 		return encoding ??= Encoding.UTF8;
+	}
+
+	public static Task<TValue> GetFromJsonAsync<TValue>(
+		this HttpClient client,
+		string requestUri,
+		CancellationToken cancellationToken = default(CancellationToken))
+	{
+		return client.GetFromJsonAsync<TValue>(requestUri, (JsonSerializerSettings)null, cancellationToken);
+	}
+
+	public static async Task<TValue> GetFromJsonAsync<TValue>(
+		this HttpClient client,
+		string requestUri,
+		JsonSerializerSettings options,
+		CancellationToken cancellationToken = default(CancellationToken))
+	{
+		if (client == null)
+			throw new ArgumentNullException(nameof(client));
+		using var msg = await client.GetAsync(requestUri, HttpCompletionOption.ResponseContentRead, cancellationToken);
+		return await GetFromJsonAsyncCore<TValue>(msg, options, cancellationToken);
+	}
+
+	public static async Task<T> GetFromJsonAsyncCore<T>(
+		this HttpResponseMessage taskResponse,
+		JsonSerializerSettings options,
+		CancellationToken cancellationToken)
+	{
+		var str = await taskResponse.Content.ReadAsStringAsync(cancellationToken);
+		return JsonConvert.DeserializeObject<T>(str);
 	}
 }

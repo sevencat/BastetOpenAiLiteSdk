@@ -91,7 +91,7 @@ public static class IFileServiceExtension
 	/// <param name="fileId">The ID of the file to use for this request</param>
 	/// <param name="cancellationToken">Propagates notification that operations should be canceled.</param>
 	/// <returns></returns>
-	public static Task<FileContentResponse<string?>> RetrieveFileContent(this IFileService service, string fileId,
+	public static Task<FileContentResponse<string>> RetrieveFileContent(this IFileService service, string fileId,
 		CancellationToken cancellationToken = default)
 	{
 		return service.RetrieveFileContent<string>(fileId, cancellationToken);

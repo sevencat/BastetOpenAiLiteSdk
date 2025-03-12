@@ -35,6 +35,9 @@
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
     <ItemGroup>
+        <Reference Include="Microsoft.Bcl.AsyncInterfaces">
+          <HintPath>E:\program\nuget\cache\microsoft.bcl.asyncinterfaces\9.0.3\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+        </Reference>
         <Reference Include="System"/>
         <Reference Include="System.Core"/>
         <Reference Include="System.Data"/>
@@ -49,6 +52,14 @@
         <Project>{e1b95937-136d-41c8-970c-581d17fe3448}</Project>
         <Name>Bastet.AiLite.Core</Name>
       </ProjectReference>
+    </ItemGroup>
+    <ItemGroup>
+      <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="9.0.3" />
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+      <PackageReference Include="System.Buffers" Version="4.6.0" />
+      <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.1.0" />
+      <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.6.0" />
+      <PackageReference Include="System.ValueTuple" Version="4.5.0" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

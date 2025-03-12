@@ -17,8 +17,12 @@ public class BaseResponse : ObjectBaseResponse
 
 	public Error error { get; set; }
 
-	public string StreamEvent { get; set; }
+	public string stream_event { get; set; }
+	
+	[JsonIgnore]
 	public HttpStatusCode HttpStatusCode { get; set; }
+	
+	[JsonIgnore]
 	public ResponseHeaderValues HeaderValues { get; set; }
 }
 

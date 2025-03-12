@@ -33,7 +33,7 @@ public interface IChatCompletionService
 	/// <param name="cancellationToken">Propagates notification that operations should be canceled.</param>
 	/// <returns></returns>
 	IAsyncEnumerable<ChatCompletionCreateResponse> CreateCompletionAsStream(
-		ChatCompletionCreateRequest chatCompletionCreate, string? modelId = null, bool justDataMode = true,
+		ChatCompletionCreateRequest chatCompletionCreate, string modelId = null, bool justDataMode = true,
 		CancellationToken cancellationToken = default);
 }
 

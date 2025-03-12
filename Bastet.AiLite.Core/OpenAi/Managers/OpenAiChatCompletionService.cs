@@ -14,7 +14,7 @@ public partial class OpenAIService : IChatCompletionService
 		string modelId = null,
 		CancellationToken cancellationToken = default)
 	{
-		chatCompletionCreateRequest.model = modelId == null ? modelId : _options.DefaultModel;
+		chatCompletionCreateRequest.model = modelId ?? _options.DefaultModel;
 		return await _httpClient.PostAndReadAsAsync<ChatCompletionCreateResponse>(
 			_endpointProvider.ChatCompletionCreate(), chatCompletionCreateRequest, cancellationToken);
 	}
@@ -27,9 +27,9 @@ public partial class OpenAIService : IChatCompletionService
 		chatCompletionCreateRequest.stream = true;
 
 		// Send the request to the CompletionCreate endpoint
-		chatCompletionCreateRequest.model = modelId == null ? modelId : _options.DefaultModel;
+		chatCompletionCreateRequest.model = modelId ?? _options.DefaultModel;
 
-		using var response = _httpClient.PostAsStreamAsync(_endpointProvider.ChatCompletionCreate(),
+        using var response = _httpClient.PostAsStreamAsync(_endpointProvider.ChatCompletionCreate(),
 			chatCompletionCreateRequest, cancellationToken);
 
 		if (!response.IsSuccessStatusCode)
