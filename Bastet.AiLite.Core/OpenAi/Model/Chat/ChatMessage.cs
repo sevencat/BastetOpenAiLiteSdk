@@ -26,25 +26,25 @@ public class ChatMessage
 		this.tool_call_id = toolCallId;
 	}
 
-	public string role { get; private set; }
+	public string role { get; set; }
 
 	[JsonIgnore]
-	public string Content { get; private set; }
+	public string Content { get; set; }
 
 	[JsonIgnore]
-	public IList<MessageContent> Contents { get; private set; }
+	public IList<MessageContent> Contents { get; set; }
 
 	[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-	public string name { get; private set; }
+	public string name { get; set; }
 
 	[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-	public string tool_call_id { get; private set; }
+	public string tool_call_id { get; set; }
 
 	[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-	public FunctionCall function_call { get; private set; }
+	public FunctionCall function_call { get; set; }
 
 	[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-	public IList<ToolCall> tool_calls { get; private set; }
+	public IList<ToolCall> tool_calls { get; set; }
 
 	[JsonProperty]
 	public object content => Content != null ? Content : Contents;
