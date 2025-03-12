@@ -1,14 +1,23 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>netstandard2.0;net462</TargetFrameworks>
         <LangVersion>13</LangVersion>
         <RootNamespace>Bastet.AiLite</RootNamespace>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <TargetFramework>net462</TargetFramework>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
 
     <ItemGroup>
+      <Folder Include="Common\" />
       <Folder Include="OpenAi\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="9.0.3" />
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+      <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.1.0" />
+      <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.6.0" />
     </ItemGroup>
 
 </Project>
