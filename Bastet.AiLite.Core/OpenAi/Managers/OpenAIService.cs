@@ -11,7 +11,7 @@ public partial class OpenAIService : IOpenAIService
 
 	public OpenAIService(OpenAIOptions options)
 	{
-		_endpointProvider = new OpenAIEndpointProvider();
+		_endpointProvider = new OpenAIEndpointProvider(options.ApiVersion);
 		_options = options;
 		_httpClient = new HttpClient();
 		_httpClient.BaseAddress = new Uri(options.BaseDomain);
