@@ -121,25 +121,25 @@ internal static class HttpClientExtensions
 		return await HandleResponseContent<TResponse>(response, cancellationToken);
 	}
 
-	public static async Task<(string stringResponse, TResponse baseResponse)> PostFileAndReadAsStringAsync<TResponse>(
-		this HttpClient client, string uri, HttpContent content, CancellationToken cancellationToken = default)
-		where TResponse : BaseResponse, new()
-	{
-		var response = await client.PostAsync(uri, content, cancellationToken);
-		if (response.IsSuccessStatusCode)
-		{
-			var tResponse = new TResponse
-			{
-				HttpStatusCode = response.StatusCode,
-				HeaderValues = response.ParseHeaders()
-			};
-			return (await response.Content.ReadAsStringAsync(cancellationToken), tResponse);
-		}
-		else
-		{
-			return (null, await HandleResponseContent<TResponse>(response, cancellationToken));
-		}
-	}
+	// public static async Task<(string stringResponse, TResponse baseResponse)> PostFileAndReadAsStringAsync<TResponse>(
+	// 	this HttpClient client, string uri, HttpContent content, CancellationToken cancellationToken = default)
+	// 	where TResponse : BaseResponse, new()
+	// {
+	// 	var response = await client.PostAsync(uri, content, cancellationToken);
+	// 	if (response.IsSuccessStatusCode)
+	// 	{
+	// 		var tResponse = new TResponse
+	// 		{
+	// 			HttpStatusCode = response.StatusCode,
+	// 			HeaderValues = response.ParseHeaders()
+	// 		};
+	// 		return (await response.Content.ReadAsStringAsync(cancellationToken), tResponse);
+	// 	}
+	// 	else
+	// 	{
+	// 		return (null, await HandleResponseContent<TResponse>(response, cancellationToken));
+	// 	}
+	// }
 
 	public static async Task<TResponse> DeleteAndReadAsAsync<TResponse>(this HttpClient client, string uri,
 		CancellationToken cancellationToken = default) where TResponse : BaseResponse, new()

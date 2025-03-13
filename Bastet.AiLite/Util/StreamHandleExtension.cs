@@ -44,7 +44,7 @@ public static class StreamHandleExtension
 			var line = await reader.ReadLineAsync();
 
 			//Console.WriteLine(line);
-			
+
 			//   Console.WriteLine("---" + line);
 			// Break the loop if we have reached the end of the stream
 			if (line == null)
@@ -229,15 +229,16 @@ public static class StreamHandleExtension
 						t.type == StaticValues.CompletionStatics.ToolType.Function) ?? false);
 			}
 
-			(int index, string id, string type) GetToolCallMetadata()
+
+			ToolCallMetaData GetToolCallMetadata()
 			{
 				var tc = block.choices?.FirstOrDefault()?.message?.tool_calls?.Where(t => t.function != null)
 					.Select(t => t).FirstOrDefault();
 
 				return tc switch
 				{
-					not null => (tc.index, tc.id, tc.type),
-					_ => (-1, null, null)
+					not null => new ToolCallMetaData(tc.index, tc.id, tc.type),
+					_ => new ToolCallMetaData(-1, null, null)
 				};
 			}
 
@@ -256,5 +257,18 @@ public static class StreamHandleExtension
 				}
 			}
 		}
+	}
+
+	public class ToolCallMetaData
+	{
+		public ToolCallMetaData(int p1, string p2, string p3)
+		{
+			index = p1;
+			id = p2;
+			type = p3;
+		}
+		public int index { get; set; }
+		public string id { get; set; }
+		public string type { get; set; }
 	}
 }

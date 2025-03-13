@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bastet.OpenAiLite.Con", "Bastet.OpenAiLite.Con.csproj", "{A4BDB623-5A19-4345-A686-E97E819E38E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bastet.AiLite.Core", "..\Bastet.AiLite.Core\Bastet.AiLite.Core.csproj", "{E1B95937-136D-41C8-970C-581D17FE3448}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bastet.AiLite", "..\Bastet.AiLite\Bastet.AiLite.csproj", "{B001ECED-A472-4FA6-BD15-88D05ECDC9D3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,9 +14,9 @@ Global
 		{A4BDB623-5A19-4345-A686-E97E819E38E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4BDB623-5A19-4345-A686-E97E819E38E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4BDB623-5A19-4345-A686-E97E819E38E8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E1B95937-136D-41C8-970C-581D17FE3448}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E1B95937-136D-41C8-970C-581D17FE3448}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E1B95937-136D-41C8-970C-581D17FE3448}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E1B95937-136D-41C8-970C-581D17FE3448}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B001ECED-A472-4FA6-BD15-88D05ECDC9D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B001ECED-A472-4FA6-BD15-88D05ECDC9D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B001ECED-A472-4FA6-BD15-88D05ECDC9D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B001ECED-A472-4FA6-BD15-88D05ECDC9D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
